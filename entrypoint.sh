@@ -83,6 +83,13 @@ TEMP_DIR=$(mktemp -d)
 # including "." and with the exception of ".git/"
 mv "$CLONE_DIR/.git" "$TEMP_DIR/.git"
 
+# keep .github to save workflows
+if [ -d "$CLONE_DIR/.github" ]
+then
+	mv "$CLONE_DIR/.github" "$TEMP_DIR/.github"	
+fi
+
+
 # $TARGET_DIRECTORY is '' by default
 ABSOLUTE_TARGET_DIRECTORY="$CLONE_DIR/$TARGET_DIRECTORY/"
 
@@ -99,6 +106,12 @@ echo "[+] Listing root Location"
 ls -al /
 
 mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
+
+# copy .github to restore workflows
+if [ -d "$TEMP_DIR/.github" ]
+then
+	mv "$TEMP_DIR/.github" "$CLONE_DIR/.github"	
+fi
 
 echo "[+] List contents of $SOURCE_DIRECTORY"
 ls "$SOURCE_DIRECTORY"
