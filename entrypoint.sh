@@ -89,6 +89,12 @@ then
 	mv "$CLONE_DIR/.github" "$TEMP_DIR/.github"	
 fi
 
+# keep README.md to save workflows
+if [ -d "$CLONE_DIR/README.md" ]
+then
+	mv "$CLONE_DIR/README.md" "$TEMP_DIR/README.md"	
+fi
+
 
 # $TARGET_DIRECTORY is '' by default
 ABSOLUTE_TARGET_DIRECTORY="$CLONE_DIR/$TARGET_DIRECTORY/"
@@ -112,6 +118,12 @@ if [ -d "$TEMP_DIR/.github" ]
 then
 	mv "$TEMP_DIR/.github" "$CLONE_DIR/.github"	
 fi
+
+# copy README.md
+if [ -f "$TEMP_DIR/README.md" ]
+then
+	mv "$TEMP_DIR/README.md" "$CLONE_DIR/README.md"	
+fi	
 
 echo "[+] List contents of $SOURCE_DIRECTORY"
 ls "$SOURCE_DIRECTORY"
