@@ -9,22 +9,16 @@ SOURCE_DIRECTORY="${2}"
 DESTINATION_GITHUB_USERNAME="${3}"
 DESTINATION_REPOSITORY_NAME="${4}"
 GITHUB_SERVER="${5}"
-USER_EMAIL="${6}"
-USER_NAME="${7}"
-DESTINATION_REPOSITORY_USERNAME="${8}"
-TARGET_BRANCH="${9}"
-COMMIT_MESSAGE="${10}"
-TARGET_DIRECTORY="${11}"
+DESTINATION_REPOSITORY_USERNAME="${6}"
+TARGET_BRANCH="${7}"
+COMMIT_MESSAGE="${8}"
+TARGET_DIRECTORY="${9}"
 
 if [ -z "$DESTINATION_REPOSITORY_USERNAME" ]
 then
 	DESTINATION_REPOSITORY_USERNAME="$DESTINATION_GITHUB_USERNAME"
 fi
 
-if [ -z "$USER_NAME" ]
-then
-	USER_NAME="$DESTINATION_GITHUB_USERNAME"
-fi
 
 # Verify that there (potentially) some access to the destination repository
 # and set up git (with GIT_CMD variable) and GIT_CMD_REPOSITORY
@@ -62,8 +56,8 @@ git --version
 
 echo "[+] Cloning destination git repository $DESTINATION_REPOSITORY_NAME"
 # Setup git
-git config --global user.email "$USER_EMAIL"
-git config --global user.name "$USER_NAME"
+git config --global user.email github-actions@github.com
+git config --global user.name github-actions
 
 {
 	git clone --single-branch --branch "$TARGET_BRANCH" "$GIT_CMD_REPOSITORY" "$CLONE_DIR"
