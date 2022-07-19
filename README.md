@@ -26,12 +26,6 @@ For the repository `https://github.com/cpina/push-to-another-repository-output` 
 
 *Warning:* this GitHub Action currently deletes all the files and directories in the destination repository. The idea is to copy from an `output` directory into the `destination-repository-name` having a copy without any previous files there.
 
-### `user-email` (argument)
-The email that will be used for the commit in the destination-repository-name.
-
-### `user-name` (argument) [optional]
-The name that will be used for the commit in the destination-repository-name. If not specified, the `destination-github-username` will be used instead.
-
 ### `destination-repository-username` (argument) [optional]
 The Username/Organization for the destination repository, if different from `destination-github-username`. For the repository `https://github.com/cpina/push-to-another-repository-output` is `cpina`.
 

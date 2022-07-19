@@ -56,8 +56,8 @@ git --version
 
 echo "[+] Cloning destination git repository $DESTINATION_REPOSITORY_NAME"
 # Setup git
-git config --global user.email github-actions@github.com
-git config --global user.name github-actions
+git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+git config --global user.name 'github-actions[bot]'
 
 {
 	git clone --single-branch --branch "$TARGET_BRANCH" "$GIT_CMD_REPOSITORY" "$CLONE_DIR"
